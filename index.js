@@ -12,6 +12,7 @@ const port = 3000;
 connectDB();
 
 app.use(express.json());
+
 app.use(cors());
 
 app.get('/', (req, res) => {
@@ -20,11 +21,9 @@ app.get('/', (req, res) => {
 
 app.use('/auth', authRoute);
 
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(port, () => {
-        console.log(`Server running on port ${port}`);
-    });
-}
 
-// Vercel ke liye export
-module.exports = serverless(app);
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
+
+

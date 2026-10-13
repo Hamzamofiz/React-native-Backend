@@ -14,7 +14,11 @@ connectDB();
 app.use(express.json());
 app.use(cors());
 
-app.use('/', authRoute);
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+app.use('/auth', authRoute);
 
 if (process.env.NODE_ENV !== 'production') {
     app.listen(port, () => {
